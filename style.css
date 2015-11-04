@@ -1,0 +1,27 @@
+body {
+  font: 'Hoefler Text', serif;
+  background-color:pink;
+}
+
+header {
+  font-size: 36px;
+}
+
+#prompt {
+  display: block;
+  width: 98%;
+  font-size: 18px;
+  padding: 8px;
+}
+
+.command {
+
+}
+
+.action {
+  font-style: italic;
+}
+
+.quote {
+  font-style: bold;
+}
