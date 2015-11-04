@@ -3,37 +3,37 @@ $(document).ready(function() {
 
 var promptBox = document.getElementById('prompt');
 var log = document.getElementById('log');
-var puse
+var purse = 10000;
 
 var pullOutPurse = function(){
   var purseTotalLi = document.createElement('li');
-  purseTotalLi.textContent = 'ShylockBot pulls out his purse containing ' + 
+  purseTotalLi.textContent = 'ShylockBot pulls out his purse containing ' + purse + 
   ' ducats.';
   purseTotalLi.classList.add('action');
+  log.appendChild(purseTotalLi);
 }
 
-var collectInterest = function(){
+// var collectInterest = function(){}
 
-}
+// var collectDebts = function(){}
+
+
 
 var addToLog = function(event){
   var logLiCommand = document.createElement('li');
-  logLiCommand.textContent = promptBox.value;
-
-
+  logLiCommand.textContent = promptBox.value
+  log.appendChild(logLiCommand);
     if (promptBox.value === 'purse') {    
-      pullOutpurse();
-    } else if (promptBox.value === 'collect interest') {
-      collectInterest(); {
-    } else if (prompt.Box.value === 'collect') {
-      collectDebts();
-    } else if (prompt.Box.value === 'set interest rate to') {
-      setInterest();
+      pullOutPurse();
+    } else if (promptBox.value === 'ledger') {
+
     }
 
+    // else if (promptBox.value === 'collect interest') {
+    //   collectInterest(); {
+    // } else if (prompt.Box.value === 'collect') {
+    //   collectDebts();
 
-
-  log.appendChild(logLiCommand);
   promptBox.value = "";
 }
 
@@ -45,9 +45,9 @@ promptBox.addEventListener('keypress',function(event) {
  }
 });
 
-> purse
-> ledger
->
+
+
+
 
 
 

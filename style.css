@@ -20,8 +20,10 @@ header {
 
 .action {
   font-style: italic;
+  list-style: none;
 }
 
 .quote {
   font-style: bold;
+  list-style: none;
 }
