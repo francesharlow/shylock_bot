@@ -4,7 +4,8 @@ $(document).ready(function() {
 var promptBox = document.getElementById('prompt');
 var log = document.getElementById('log');
 var purse = 10000;
-var ledger = {};
+var ledgerDebtors = [];
+var ledgerAmounts = [];
 
 var pullOutPurse = function(){
   var purseTotalLi = document.createElement('li');
@@ -12,24 +13,44 @@ var pullOutPurse = function(){
   ' ducats.';
   purseTotalLi.classList.add('action');
   log.appendChild(purseTotalLi);
-}
+};
 
 var lendMoney = function(){
   var command = promptBox.value;
   var commandArray = command.split(" ");
-  ledger.action = commandArray[0];
-  ledger.lender = commandArray[1];
-  ledger.amount = commandArray[2];
+  ledgerDebtors.push(commandArray[1]);
+  ledgerAmounts.push(commandArray[2]);
+
   var lendMoneyLi = document.createElement('li');
   lendMoneyLi.textContent = 'ShylockBot gives ' + commandArray[1] + ' ' + commandArray[2] + ' ducats';
   lendMoneyLi.classList.add('action');
   log.appendChild(lendMoneyLi);
-}
+};
 
 var trackLoans = function(){
-  purseTotalLi.classList.add('action');
-  purse -= Ledger.amount;
-}
+  var command = promptBox.value;
+  // console.log(promptBox.value);
+  var commandArray = command.split(" ");
+  purse -= parseInt(commandArray[2]);
+};
+
+var listDebts = function(){
+  var ledgerLi = document.createElement('li');
+  ledgerLi.textContent = 'ShylockBot pulls out his ledger';
+  ledgerLi.classList.add('action');
+  log.appendChild(ledgerLi);
+  // var debts = document.createElement('ul');
+  // ledgerLi.appendChild(debts);
+  // console.log(ledgerDebtors)
+  for (var i = 0; i < ledgerDebtors.length; i++) {
+    var debtorsLi = document.createElement('li');
+    // console.log(ledgerDebtors);
+    debtorsLi.textContent = ledgerDebtors[i] + ' owes me ' + ledgerAmounts[i] + ' ducats';
+    debtorsLi.classList.add('quote');
+    // debtorsLi.classList.add('quote'); 
+    log.appendChild(debtorsLi);
+  }
+};
 
 // var collectInterest = function(){}
 
@@ -48,32 +69,21 @@ var addToLog = function(event){
     } else if (commandArray[0] === 'lend') {
       lendMoney();
       trackLoans();
+    } else if (promptBox.value === 'ledger') {
+      listDebts();
     }
-
-    // } else if (promptBox.value === 'ledger') {
-    //   trackLoans();
     // } else if (promptBox.value === 'collect interest') {
     //   collectInterest(); {
     // } else if (prompt.Box.value === 'collect') {
     //   collectDebts();
 
   promptBox.value = "";
-}
-
-
+};
 
 promptBox.addEventListener('keypress',function(event) {
  if (event.keyCode === 13) {
   addToLog();
  }
 });
-
-
-
-
-
-
-
-
 
 });

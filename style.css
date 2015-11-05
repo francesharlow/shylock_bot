@@ -9,13 +9,10 @@ header {
 
 #prompt {
   display: block;
-  width: 98%;
+  width: 50%;
   font-size: 18px;
-  padding: 8px;
-}
-
-.command {
-
+  padding: 9px;
+  float: right;
 }
 
 .action {
@@ -24,6 +21,6 @@ header {
 }
 
 .quote {
-  font-style: bold;
+  font-weight: bold;
   list-style: none;
 }
